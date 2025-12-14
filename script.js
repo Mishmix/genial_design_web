@@ -872,13 +872,16 @@ revealElements.forEach(el => revealObserver.observe(el));
 
 // ============ A/B TESTING SECTION ANIMATIONS ============
 (function() {
-    // Animated elements observer
+    // Animated elements observer - run only once per element
     const abAnimatedElements = document.querySelectorAll('.ab-test-interactive, .ab-titles-animated, .ab-formula-animated, .ab-checklist-animated, .ab-progress-animated, .ab-equation-animated, .ab-result');
     
     const abObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            // Only animate once - check if already animated
+            if (entry.isIntersecting && !entry.target.classList.contains('ab-animated')) {
                 entry.target.classList.add('ab-animated');
+                // Stop observing after animation triggered
+                abObserver.unobserve(entry.target);
                 
                 // Set CSS variables for animated bars
                 entry.target.querySelectorAll('.ab-fill-animated').forEach(bar => {
@@ -1588,14 +1591,24 @@ if (calcBtn) {
 const megaCounterEl = document.getElementById('mega-counter-value');
 const megaParticlesContainer = document.getElementById('mega-particles');
 
+// Calculate initial value immediately - before any other code runs
+const baseDate = new Date('2024-12-10T00:00:00Z');
+const baseViews = 847000000;
+const avgViewsPerSecond = 11.5; // ~1M per day average
+
+// Set initial value IMMEDIATELY to prevent flash of wrong number
 if (megaCounterEl) {
-    // Base: 847,000,000 on December 10, 2024
-    const baseDate = new Date('2024-12-10T00:00:00Z');
-    const baseViews = 847000000;
-    const avgViewsPerSecond = 11.5; // ~1M per day average
+    const initialViews = Math.floor(baseViews + ((new Date() - baseDate) / 1000 * avgViewsPerSecond));
+    megaCounterEl.textContent = initialViews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+if (megaCounterEl) {
+    // Calculate initial value immediately to prevent flash of wrong number
+    const initialViews = Math.floor(baseViews + ((new Date() - baseDate) / 1000 * avgViewsPerSecond));
+    megaCounterEl.textContent = initialViews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
     
     // Randomization state - more chaotic
-    let displayedViews = 0;
+    let displayedViews = initialViews;
     let pendingViews = 0;
     let lastUpdate = Date.now();
     let currentSpeed = 1; // Speed multiplier
@@ -2235,7 +2248,7 @@ if (megaScroll) {
     if (portfolioSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                sectionVisible = entry.isIntersecting; 
+                sectionVisible = entry.isIntersecting;
                 checkAndToggleShuffle();
             });
         }, { threshold: 0.1 });
@@ -2257,6 +2270,84 @@ if (megaScroll) {
         windowFocused = true;
         checkAndToggleShuffle();
     });
+})();
+
+// ============ CASES EXPAND/COLLAPSE (Mobile) ============
+(function() {
+    const casesList = document.querySelector('.cases-list');
+    const casesExpandBtn = document.getElementById('cases-expand-btn');
+    
+    if (!casesList || !casesExpandBtn) return;
+    
+    // Only run on mobile
+    if (window.innerWidth > 767) return;
+    
+    const cases = casesList.querySelectorAll('.case');
+    const INITIAL_SHOW = 3;
+    const SHOW_MORE = 3;
+    let visibleCount = INITIAL_SHOW;
+    
+    function updateVisibility() {
+        cases.forEach((caseEl, index) => {
+            if (index < visibleCount) {
+                caseEl.style.display = 'grid';
+            } else {
+                caseEl.style.display = 'none';
+            }
+        });
+    }
+    
+    function updateButtonText() {
+        const btnText = casesExpandBtn.querySelector('span');
+        if (visibleCount >= cases.length) {
+            btnText.textContent = 'Свернуть';
+            casesExpandBtn.classList.add('expanded');
+        } else {
+            btnText.textContent = 'Показать ещё';
+            casesExpandBtn.classList.remove('expanded');
+        }
+    }
+    
+    casesExpandBtn.addEventListener('click', () => {
+        if (visibleCount >= cases.length) {
+            // Collapse back to initial
+            visibleCount = INITIAL_SHOW;
+            updateVisibility();
+            
+            // Scroll to cases section
+            const casesSection = document.getElementById('cases');
+            if (casesSection) {
+                setTimeout(() => {
+                    casesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        } else {
+            // Show more
+            const prevCount = visibleCount;
+            visibleCount = Math.min(visibleCount + SHOW_MORE, cases.length);
+            
+            // Animate newly visible cases
+            cases.forEach((caseEl, index) => {
+                if (index >= prevCount && index < visibleCount) {
+                    caseEl.style.display = 'grid';
+                    caseEl.style.opacity = '0';
+                    caseEl.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        caseEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        caseEl.style.opacity = '1';
+                        caseEl.style.transform = 'translateY(0)';
+                    }, (index - prevCount) * 100);
+                }
+            });
+        }
+        
+        updateButtonText();
+    });
+    
+    // Initial setup
+    updateVisibility();
+    updateButtonText();
 })();
 
 // ============ CONSOLE ============
