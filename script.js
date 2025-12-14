@@ -514,9 +514,27 @@ if (backToTop) {
 const mobileCta = document.getElementById('mobile-cta');
 
 if (mobileCta) {
+    const finalCtaSection = document.getElementById('cta');
+    
     window.addEventListener('scroll', throttle(() => {
-        if (window.scrollY > 500) {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        // Show after scrolling 500px
+        if (scrollY > 500) {
             mobileCta.classList.add('visible');
+            
+            // Hide when near final CTA section to avoid duplicate buttons
+            if (finalCtaSection) {
+                const ctaRect = finalCtaSection.getBoundingClientRect();
+                const isNearCta = ctaRect.top < windowHeight && ctaRect.bottom > 0;
+                
+                if (isNearCta) {
+                    mobileCta.classList.add('hide-near-cta');
+                } else {
+                    mobileCta.classList.remove('hide-near-cta');
+                }
+            }
         } else {
             mobileCta.classList.remove('visible');
         }
