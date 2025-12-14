@@ -2150,6 +2150,10 @@ button {
     letter-spacing: -0.02em;
 }
 
+.section-title-large {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
 .section-subtitle {
     font-size: 1rem;
     color: var(--text-muted);
@@ -5305,9 +5309,9 @@ button {
 }
 
 .path-b {
-    background: linear-gradient(145deg, rgba(10, 35, 28, 0.95), rgba(8, 30, 35, 0.9));
-    border: 2px solid rgba(16, 185, 129, 0.5);
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+    background: linear-gradient(145deg, #050a08, #030608) !important;
+    border: 2px solid rgba(16, 185, 129, 0.35);
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
 }
 
 .path-glow {
@@ -5530,19 +5534,32 @@ button {
     font-size: 1.1rem;
     color: var(--text-muted);
     margin-bottom: 2rem;
+    text-align: center;
+}
+
+.cta-free-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: linear-gradient(135deg, var(--accent), var(--cyan));
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+    white-space: nowrap;
 }
 
 @media (max-width: 600px) {
     .final-cta-instruction {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        display: block;
     }
     
     .cta-free-badge {
-        margin-left: 0;
-        margin-top: 0.25rem;
+        display: block;
+        margin: 0.5rem auto 0;
+        width: fit-content;
     }
 }
 
@@ -5789,8 +5806,8 @@ button {
 }
 
 .path-card-bg-glow {
-    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.08), transparent 70%);
-    opacity: 0.3;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.03), transparent 70%);
+    opacity: 0.1;
 }
 
 /* Path B Enhanced Glow */
@@ -5806,8 +5823,8 @@ button {
     background-size: 200% 200%;
     border-radius: inherit;
     z-index: -1;
-    opacity: 0.4;
-    filter: blur(15px);
+    opacity: 0.15;
+    filter: blur(20px);
     animation: glow-rotate 4s linear infinite;
 }
 
@@ -6098,20 +6115,7 @@ button {
     }
 }
 
-/* Free Badge */
-.cta-free-badge {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: linear-gradient(135deg, var(--accent), var(--cyan));
-    color: var(--bg);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 1rem;
-    margin-left: 0.5rem;
-    animation: badge-shine 3s ease-in-out infinite;
-}
+/* Free Badge - moved to final-cta-instruction section */
 
 @keyframes badge-shine {
     0%, 100% { opacity: 1; }
@@ -8533,16 +8537,12 @@ button {
 
 /* ============ SCROLL FIX - prevent section trapping ============ */
 .section {
-    overflow-x: hidden;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: auto;
+    overflow: hidden !important;
 }
 
 .hero,
-.comparison-section,
-.ab-section {
+.comparison-section {
     overflow: visible !important;
-    -webkit-overflow-scrolling: auto;
 }
 
 /* Mega counter needs special handling for glow effect */
@@ -8576,10 +8576,9 @@ html, body {
 .section,
 .ab-block,
 .ab-section,
-#ab-testing {
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch;
+#ab-testing,
+.section-gradient {
+    overflow: hidden !important;
     max-width: 100vw;
 }
 
@@ -8590,4 +8589,19 @@ html, body {
 .ab-package,
 .ab-system {
     overflow: hidden !important;
+}
+
+/* Hide any scrollbars that might appear */
+#ab-testing::-webkit-scrollbar,
+.section-gradient::-webkit-scrollbar,
+.ab-block::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+#ab-testing,
+.section-gradient {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
