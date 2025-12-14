@@ -2235,7 +2235,7 @@ if (megaScroll) {
     if (portfolioSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                sectionVisible = entry.isIntersecting;
+                sectionVisible = entry.isIntersecting; 
                 checkAndToggleShuffle();
             });
         }, { threshold: 0.1 });
