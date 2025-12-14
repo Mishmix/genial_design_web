@@ -7449,8 +7449,13 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow: visible !important;
+    overflow-x: visible !important;
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 40%, transparent 70%);
+}
+
+.mega-counter-section .container {
+    overflow: visible !important;
 }
 
 .mega-counter-section::before {
@@ -7593,6 +7598,14 @@ button {
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.3s;
     opacity: 0;
+}
+
+.mega-counter-brand {
+    background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
 }
 
 
@@ -8233,4 +8246,269 @@ button {
         bottom: 5px;
     }
 }
- 
+
+/* ============ CASES SHOW MORE (Mobile) ============ */
+/* JS handles visibility on mobile, this is fallback for no-JS */
+@media (max-width: 767px) {
+    .cases-list .case {
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+}
+
+.cases-expand-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem auto 0;
+    padding: 0.875rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 100px;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .cases-expand-btn {
+        display: flex;
+    }
+}
+
+.cases-expand-btn:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.cases-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+.cases-expand-btn svg {
+    transition: transform 0.3s ease;
+}
+
+/* ============ CHANNELS GRID - 2 columns on mobile ============ */
+@media (max-width: 767px) {
+    .channels-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        flex-direction: unset !important;
+    }
+    
+    .channel-card {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0.75rem !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    .channel-avatar-wrapper {
+        margin: 0 auto;
+    }
+    
+    .channel-avatar {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .channel-info {
+        text-align: center;
+    }
+    
+    .channel-name {
+        font-size: 0.8rem !important;
+    }
+    
+    .channel-subs {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .channel-subs-count {
+        font-size: 0.95rem !important;
+    }
+    
+    .channel-subs-label {
+        font-size: 0.65rem !important;
+    }
+    
+    .channel-arrow {
+        display: none !important;
+    }
+    
+    /* Show only 4 channels initially on mobile */
+    .channels-grid:not(.expanded) .channel-card:nth-child(n+5) {
+        display: none !important;
+    }
+    
+    .channels-grid.expanded .channel-card:nth-child(n+5) {
+        display: flex !important;
+    }
+}
+
+/* ============ SECTION LABELS - fix clipping ============ */
+.section-label {
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    overflow: visible !important;
+}
+
+@media (max-width: 767px) {
+    .section-header {
+        padding-top: 1rem;
+        overflow: visible !important;
+    }
+    
+    .section-label {
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+    }
+    
+    .section {
+        padding-top: 3rem !important;
+    }
+}
+
+/* ============ AB PACKAGE BLOCK - Mobile layout ============ */
+@media (max-width: 600px) {
+    .ab-package-formula {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+        padding: 1rem !important;
+    }
+    
+    .ab-package-item {
+        padding: 0.75rem !important;
+        min-width: unset !important;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-light);
+    }
+    
+    .ab-package-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .ab-package-icon svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .ab-package-label {
+        font-size: 0.8rem !important;
+    }
+    
+    .ab-package-desc {
+        font-size: 0.65rem !important;
+    }
+    
+    .ab-package-plus,
+    .ab-package-equals {
+        display: none !important;
+    }
+    
+    .ab-package-result {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        padding: 1rem !important;
+        gap: 0.75rem !important;
+    }
+    
+    .ab-package-result svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .ab-package-result span {
+        font-size: 1rem !important;
+    }
+    
+    .ab-package-checklist {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem !important;
+    }
+    
+    .ab-check-item {
+        font-size: 0.85rem !important;
+    }
+    
+    .ab-package-bottom p {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* ============ SCROLL FIX - prevent section trapping ============ */
+.section {
+    overflow-x: hidden;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: auto;
+}
+
+.hero,
+.comparison-section,
+.ab-section {
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto;
+}
+
+/* Mega counter needs special handling for glow effect */
+.mega-counter-section {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+.mega-counter-section .container,
+.mega-counter-section .mega-counter-container {
+    overflow: visible !important;
+}
+
+/* Ensure glow is not clipped */
+.mega-counter-glow {
+    overflow: visible !important;
+}
+
+/* Remove any scroll snap that might cause issues */
+html, body {
+    scroll-snap-type: none !important;
+}
+
+* {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: unset !important;
+}
+
+/* Prevent double scrollbar on any section */
+.section,
+.ab-block,
+.ab-section,
+#ab-testing {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100vw;
+}
+
+/* Ensure no nested scrollbars */
+.ab-problem,
+.ab-solution,
+.ab-proof,
+.ab-package,
+.ab-system {
+    overflow: hidden !important;
+}
