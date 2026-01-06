@@ -39,7 +39,11 @@
         'Обложки и названия,': 'Обкладинки та назви,',
         'которые взрывают алгоритмы YouTube': 'які рвуть алгоритми YouTube',
         'Комплексное решение: визуал + заголовок + A/B тестирование.': 'Комплексне рішення: візуал + заголовок + A/B-тестування.',
+        'Комплексное решение: визуал + заголовок + A/B тестирование.\n        Гарантированный рост просмотров. Мы не гадаем — мы даём данные.': 'Комплексне рішення: візуал + заголовок + A/B-тестування.\n        Гарантоване зростання переглядів. Ми не вгадуємо - ми спираємося на дані.',
         'Гарантированный рост просмотров. Мы не гадаем — мы даём данные.': 'Гарантоване зростання переглядів. Ми не вгадуємо - ми спираємося на дані.',
+        'Комплексное решение: визуал + заголовок + A/B тестирование.        Гарантированный рост просмотров. Мы не гадаем — мы даём данные.': 'Комплексне рішення: візуал + заголовок + A/B-тестування. Гарантоване зростання переглядів. Ми не вгадуємо - ми спираємося на дані.',
+        // Additional variants for hero subtitle with different whitespace
+        'Комплексное решение: визуал + заголовок + A/B тестирование.\n        Гарантированный рост просмотров. Мы не гадаем — мы даём данные.': 'Комплексне рішення: візуал + заголовок + A/B-тестування.\n        Гарантоване зростання переглядів. Ми не вгадуємо - ми спираємося на дані.',
         'Начать сейчас': 'Почати зараз',
         'Смотреть кейсы': 'Дивитися кейси',
         'Обложек создано': 'Обкладинок створено',
@@ -345,7 +349,7 @@
     };
 
 
-    // Ukrainian channels HTML for replacement
+    // Ukrainian channels HTML for replacement (using working postimg.cc URLs only)
     const ukrainianChannelsHTML = `
                     <!-- Channel 1 - vanzai -->
                     <a href="https://www.youtube.com/@vanzai" target="_blank" class="channel-card glass-card">
@@ -404,64 +408,7 @@
                             </svg>
                         </div>
                     </a>
-                    <!-- Channel 4 - BIHUS.info -->
-                    <a href="https://www.youtube.com/@BihusInfo" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualBihusAvatar" alt="BIHUS.info" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">BIHUS.info</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">1,8 млн</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 5 - імені Т.Г. Шевченка -->
-                    <a href="https://www.youtube.com/@Shevchenko_channel" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualShevAvatar" alt="імені Т.Г. Шевченка" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">імені Т.Г. Шевченка</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">1,5 млн</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 6 - Історія Без Міфів -->
-                    <a href="https://www.youtube.com/@HistoryWithoutMyths" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualHistoryAvatar" alt="Історія Без Міфів" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Історія Без Міфів</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">1,2 млн</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 7 - INSIDE FOOTBALL -->
+                    <!-- Channel 4 - INSIDE FOOTBALL -->
                     <a href="https://www.youtube.com/@InsideFootballENG" target="_blank" class="channel-card glass-card">
                         <div class="channel-avatar-wrapper">
                             <img src="https://i.postimg.cc/QxchcQdJ/channels4-profile-(6).jpg" alt="INSIDE FOOTBALL" class="channel-avatar">
@@ -480,7 +427,7 @@
                             </svg>
                         </div>
                     </a>
-                    <!-- Channel 8 - Олег Боков -->
+                    <!-- Channel 5 - Олег Боков -->
                     <a href="https://www.youtube.com/@OlegBokov" target="_blank" class="channel-card glass-card">
                         <div class="channel-avatar-wrapper">
                             <img src="https://i.postimg.cc/xdJmPpNd/channels4-profile-(2).jpg" alt="Олег Боков" class="channel-avatar">
@@ -499,7 +446,7 @@
                             </svg>
                         </div>
                     </a>
-                    <!-- Channel 9 - Otro Fútbol -->
+                    <!-- Channel 6 - Otro Fútbol -->
                     <a href="https://www.youtube.com/@otrofutbolesp" target="_blank" class="channel-card glass-card">
                         <div class="channel-avatar-wrapper">
                             <img src="https://i.postimg.cc/3JqmDHWS/channels4-profile-(8).jpg" alt="Otro Fútbol" class="channel-avatar">
@@ -518,26 +465,7 @@
                             </svg>
                         </div>
                     </a>
-                    <!-- Channel 10 - BLOGMAYSTER -->
-                    <a href="https://www.youtube.com/@BLOGMAYSTER" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualBlogmaysterAvatar" alt="BLOGMAYSTER" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">BLOGMAYSTER</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">500K</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 11 - WarsofTheWorld -->
+                    <!-- Channel 7 - WarsofTheWorld -->
                     <a href="https://www.youtube.com/@warsoftheworld1945" target="_blank" class="channel-card glass-card">
                         <div class="channel-avatar-wrapper">
                             <img src="https://i.postimg.cc/FR1hSwYZ/unnamed-(57).jpg" alt="WarsofTheWorld" class="channel-avatar">
@@ -556,45 +484,7 @@
                             </svg>
                         </div>
                     </a>
-                    <!-- Channel 12 - Geek Journal -->
-                    <a href="https://www.youtube.com/@GeekJournal" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualGeekAvatar" alt="Geek Journal" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Geek Journal</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">350K</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 13 - Kovalskyi -->
-                    <a href="https://www.youtube.com/@Kovalskyi" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualKovalskyiAvatar" alt="Kovalskyi" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Kovalskyi</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">300K</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 14 - Siarist -->
+                    <!-- Channel 8 - Siarist -->
                     <a href="https://www.youtube.com/@Siarist" target="_blank" class="channel-card glass-card">
                         <div class="channel-avatar-wrapper">
                             <img src="https://i.postimg.cc/SRTQ3qHf/channels4-profile-(3).jpg" alt="Siarist" class="channel-avatar">
@@ -613,26 +503,7 @@
                             </svg>
                         </div>
                     </a>
-                    <!-- Channel 15 - рома геній -->
-                    <a href="https://www.youtube.com/@roma_genius" target="_blank" class="channel-card glass-card">
-                        <div class="channel-avatar-wrapper">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_nQJNqxPqJLqGi5g0_T8TxNwQNPqactualRomaAvatar" alt="рома геній" class="channel-avatar">
-                            <div class="channel-avatar-glow"></div>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">рома геній</div>
-                            <div class="channel-subs">
-                                <span class="channel-subs-count">220K</span>
-                                <span class="channel-subs-label">підписників</span>
-                            </div>
-                        </div>
-                        <div class="channel-arrow">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </div>
-                    </a>
-                    <!-- Channel 16 - Mykkyta -->
+                    <!-- Channel 9 - Mykkyta -->
                     <a href="https://www.youtube.com/@Mykkyta_1" target="_blank" class="channel-card glass-card">
                         <div class="channel-avatar-wrapper">
                             <img src="https://i.postimg.cc/tC4Nx5kG/channels4-profile-(7).jpg" alt="Mykkyta" class="channel-avatar">
@@ -642,6 +513,101 @@
                             <div class="channel-name">Mykkyta</div>
                             <div class="channel-subs">
                                 <span class="channel-subs-count">200K</span>
+                                <span class="channel-subs-label">підписників</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 10 - CriptoMind -->
+                    <a href="https://www.youtube.com/@CriptoMindYT" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/PJPnLDRk/channels4-profile-(4).jpg" alt="CriptoMind" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">CriptoMind</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">175K</span>
+                                <span class="channel-subs-label">підписників</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 11 - Marcos Reviews -->
+                    <a href="https://www.youtube.com/@MarcosReviews" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/3Jk3Nss8/unnamed-(55).jpg" alt="Marcos Reviews" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Marcos Reviews</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">170K</span>
+                                <span class="channel-subs-label">підписників</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 12 - Більше золота -->
+                    <a href="https://www.youtube.com/@bolshegold" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/FHKChv8Z/unnamed-(56).jpg" alt="Більше золота" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Більше золота</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">117K</span>
+                                <span class="channel-subs-label">підписників</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 13 - Нульовий Пацієнт -->
+                    <a href="https://www.youtube.com/@PATIENT-ZERO" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/ncy3yWBY/unnamed-(58).jpg" alt="Нульовий Пацієнт" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Нульовий Пацієнт</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">120K</span>
+                                <span class="channel-subs-label">підписників</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 14 - Shooterino -->
+                    <a href="https://www.youtube.com/@ShooterinoYT" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/wBVC0FK6/channels4-profile-(5).jpg" alt="Shooterino" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Shooterino</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">115K</span>
                                 <span class="channel-subs-label">підписників</span>
                             </div>
                         </div>
@@ -732,6 +698,12 @@
         const channelsGrid = document.getElementById('channels-grid');
         if (channelsGrid) {
             channelsGrid.innerHTML = ukrainianChannelsHTML;
+        }
+        
+        // Special handling for hero-subtitle (has complex whitespace)
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (heroSubtitle) {
+            heroSubtitle.innerHTML = 'Комплексне рішення: візуал + заголовок + A/B-тестування.<br>Гарантоване зростання переглядів. Ми не вгадуємо - ми спираємося на дані.';
         }
         
         // Translate page title
