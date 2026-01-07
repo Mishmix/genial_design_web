@@ -32,8 +32,21 @@
     const siteLang = detectLanguage();
     window.SITE_LANG = siteLang;
     
+    // Function to show body after content is ready
+    function showBody() {
+        if (document.body) {
+            document.body.style.opacity = '1';
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.style.opacity = '1';
+            });
+        }
+    }
+    
     // If Russian - no translation needed (site is in Russian by default)
+    // But still need to show body
     if (siteLang === 'ru') {
+        showBody();
         return;
     }
 
@@ -1821,6 +1834,9 @@
         
         // Update HTML lang attribute
         document.documentElement.lang = siteLang;
+        
+        // Show body after translation is complete
+        document.body.style.opacity = '1';
     }
     
     // Run translation when DOM is ready
