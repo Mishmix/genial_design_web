@@ -32,21 +32,26 @@
     const siteLang = detectLanguage();
     window.SITE_LANG = siteLang;
     
-    // Function to show body after content is ready
-    function showBody() {
-        if (document.body) {
-            document.body.style.opacity = '1';
+    // Function to hide loading screen after content is ready
+    function hideLoader() {
+        const loader = document.getElementById('loading-screen');
+        if (loader) {
+            loader.classList.add('hidden');
+        }
+    }
+    
+    function onReady(callback) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', callback);
         } else {
-            document.addEventListener('DOMContentLoaded', function() {
-                document.body.style.opacity = '1';
-            });
+            callback();
         }
     }
     
     // If Russian - no translation needed (site is in Russian by default)
-    // But still need to show body
+    // But still need to hide loader
     if (siteLang === 'ru') {
-        showBody();
+        onReady(hideLoader);
         return;
     }
 
@@ -1835,8 +1840,8 @@
         // Update HTML lang attribute
         document.documentElement.lang = siteLang;
         
-        // Show body after translation is complete
-        document.body.style.opacity = '1';
+        // Hide loading screen after translation is complete
+        hideLoader();
     }
     
     // Run translation when DOM is ready
