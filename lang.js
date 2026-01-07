@@ -1,7 +1,8 @@
 // ============ LANGUAGE AUTO-DETECTION ============
-// Priority: Ukrainian > Russian > English (default)
-// If user has UK in languages - show Ukrainian
-// If user has RU in languages (but not UK) - show Russian  
+// Priority: Ukrainian > Spanish > Russian > English (default)
+// UK in languages - show Ukrainian
+// ES in languages (but not UK) - show Spanish
+// RU in languages (but not UK/ES) - show Russian  
 // Otherwise - show English
 
 (function() {
@@ -12,9 +13,13 @@
         const languages = navigator.languages || [navigator.language || navigator.userLanguage];
         const langList = languages.map(l => l.toLowerCase());
         
-        // Check for Ukrainian first
+        // Check for Ukrainian first (highest priority)
         if (langList.some(lang => lang.startsWith('uk'))) {
             return 'uk';
+        }
+        // Check for Spanish
+        if (langList.some(lang => lang.startsWith('es'))) {
+            return 'es';
         }
         // Check for Russian
         if (langList.some(lang => lang.startsWith('ru'))) {
@@ -659,6 +664,319 @@
         'Тарифы на создание обложек и названий для YouTube. Выберите подходящий вариант.': 'Pricing for YouTube thumbnails and titles. Choose the right option.'
     };
 
+    // ============ SPANISH TRANSLATIONS ============
+    const translations_es = {
+        // HEADER
+        'Портфолио': 'Portafolio',
+        'Кейсы': 'Casos',
+        'Контакты': 'Contacto',
+        'Свободные слоты:': 'Plazas disponibles:',
+        'из 5': 'de 5',
+        'Заказать': 'Encargar',
+        'Обсудить проект': 'Hablar del proyecto',
+        'Меню': 'Menú',
+        
+        // MEGA COUNTER
+        'Обновляется в реальном времени': 'Se actualiza en tiempo real',
+        'просмотров на видео с обложками от': 'visualizaciones en vídeos con miniaturas de',
+        'Присоединиться': 'Unirme',
+        'Как мы это делаем': 'Cómo lo hacemos',
+        
+        // HERO
+        'Обложки и названия,': 'Miniaturas y títulos',
+        'которые взрывают алгоритмы YouTube': 'que hacen explotar el algoritmo de YouTube',
+        'Комплексное решение: визуал + заголовок + A/B тестирование.': 'Solución integral: visual + título + pruebas A/B.',
+        'Гарантированный рост просмотров. Мы не гадаем — мы даём данные.': 'Crecimiento garantizado de visualizaciones. No adivinamos: trabajamos con datos.',
+        'Начать сейчас': 'Empezar ahora',
+        'Смотреть кейсы': 'Ver casos',
+        'Обложек создано': 'Miniaturas creadas',
+        'Средний рост просмотров': 'Crecimiento medio de visualizaciones',
+        'Каналов-партнёров': 'Canales asociados',
+        'Просмотров': 'Visualizaciones',
+        '+500 каналов': '+500 canales',
+        'Упаковываю каналы с миллионами подписчиков': 'Optimizo canales con millones de suscriptores',
+        'подписчиков': 'suscriptores',
+        'млн': 'M',
+        'Показать ещё': 'Mostrar más',
+        'Рост просмотров': 'Crecimiento de visualizaciones',
+        
+        // COMPARISON
+        'Один контент.': 'Un mismo contenido.',
+        'Две упаковки.': 'Dos presentaciones.',
+        'Разница — в 100+ раз.': 'La diferencia es de 100x+.',
+        'Просмотры': 'Visualizaciones',
+        'Слабая': 'Débil',
+        'упаковка →': 'presentación →',
+        'мало': 'pocos',
+        'кликов': 'clics',
+        'Сильная': 'Fuerte',
+        'просмотров': 'visualizaciones',
+        'рост просмотров': 'crecimiento de visualizaciones',
+        
+        // Comparison case titles
+        '"ТОП 12 лучших и худших упражнений на дельты"': '"TOP 12 mejores y peores ejercicios para deltoides"',
+        '"Эти 6 упражнений УБИВАЮТ твои плечи. 90% тренеров их советуют"': '"Estos 6 ejercicios DESTROZAN tus hombros. El 90% de entrenadores los recomienda"',
+        '"Самый безумный художник! Кем на самом деле был Караваджо? ft. Николай Жаринов"': '"¡El artista más loco! ¿Quién fue Caravaggio en realidad?"',
+        '"Гений или извращенец? За что 8000 человек ВОССТАЛИ против художника"': '"¿Genio o pervertido? Por qué 8.000 personas SE REBELARON contra el artista"',
+        '"116 OVR ПОДПИСЧИКУ И ЛОВИМ ВСЕХ КУМИРОВ В FC MOBILE"': '"116 OVR a un SUSCRIPTOR y atrapamos a TODOS los ídolos en FC MOBILE"',
+        '"Прокачал ПОДПИСЧИКА ночью в FC Mobile!! Проснулся с ЛУЧШИМ СОСТАВОМ"': '"Mejoré a un SUSCRIPTOR de noche en FC Mobile!! Me desperté con el MEJOR EQUIPO"',
+        
+        // CASES
+        'Результаты, которые': 'Resultados que',
+        'говорят сами': 'hablan por sí solos',
+        'Авто': 'Motor',
+        'Искусство': 'Arte',
+        'История': 'Historia',
+        'Финансы и инвестиции': 'Finanzas e inversión',
+        'Путешествия': 'Viajes',
+        'Образование': 'Educación',
+        'Криптовалюта и финансы': 'Cripto y finanzas',
+        'Обзор техники': 'Reseñas de tecnología',
+        'Название до:': 'Título antes:',
+        'Название после:': 'Título después:',
+        'CTR до': 'CTR antes',
+        'CTR после': 'CTR después',
+        'До': 'Antes',
+        'После': 'Después',
+        
+        // Case titles
+        '"Почему всем не зашла новая M5 G90?"': '"¿Por qué a nadie le convenció el nuevo M5 G90?"',
+        '"Я Проехал 1000 КМ на M5 G90: Вся ЖЕСТЬ 🏎️"': '"Hice 1000 km con el M5 G90: TODO el caos 🏎️"',
+        '"Лувр обокрали за семь минут"': '"Robaron el Louvre en siete minutos"',
+        '"Лувр ограбили ВПЕРВЫЕ за 27 лет — как это возможно?"': '"Robaron el Louvre por PRIMERA vez en 27 años: ¿cómo es posible?"',
+        '"История шпиона, который победил КГБ"': '"La historia del espía que venció al KGB"',
+        '"Он Переиграл КГБ и Предотвратил Ядерную Войну"': '"Engañó al KGB y evitó una guerra nuclear"',
+        '"Как безопасно купить и продать криптовалюту? Легальный способ без блокировок"': '"Cómo comprar y vender cripto de forma segura: un método legal sin bloqueos"',
+        '"Самый ЛЕНИВЫЙ метод покупки крипты (Без паспорта и карт)"': '"El método MÁS VAGO para comprar cripto (sin pasaporte ni tarjetas)"',
+        '"УЖАСНАЯ ТАЙНА ХРИСТИАНСТВА, КОТОРУЮ СКРЫЛИ"': '"El TERRIBLE secreto del cristianismo que ocultaron"',
+        '"Единственная ИСТИННАЯ религия? Разбор, который не покажут по ТВ..."': '"¿La única religión VERDADERA? El análisis que no verás en la TV..."',
+        '"Тайные артефакты Аненербе! И тайны третьего рейха!"': '"¡Los artefactos secretos de la Ahnenerbe y los misterios del Tercer Reich!"',
+        '"ЧТО нашли во льдах? Секретный отчет Аненербе (РАССЕКРЕЧЕНО)"': '"¿QUÉ encontraron en el hielo? Informe secreto de la Ahnenerbe (DESCLASIFICADO)"',
+        '"Чикаго - самый КРУПНЫЙ логистический центр США? // ПО ШТАТАМ НА ШКОЛЬНОМ АВТОБУСЕ"': '"Chicago: ¿el MAYOR centro logístico de EE. UU.?"',
+        '"По Штатам на Школьном Автобусе: ЧИКАГО🇺🇸"': '"Por EE. UU. en un autobús escolar: CHICAGO🇺🇸"',
+        '"Самые нужные фразы А1 на каждый день. Учим английский на слух"': '"Las frases A1 más útiles para el día a día"',
+        '"300 Английских Фраз для БЕГЛОЙ Речи // Заговори Как Носитель // #1 ВЕСЬ английский A2"': '"300 frases en inglés para hablar con FLUIDEZ // Habla como nativo"',
+        '"ЧТО КУПИТЬ СЕЙЧАС? ПЕРСПЕКТИВНЫЕ МОНЕТЫ! ОБЗОР РЫНКА!"': '"¿QUÉ COMPRAR AHORA? ¡MONEDAS CON POTENCIAL! ¡ANÁLISIS DEL MERCADO!"',
+        '"Вложил $10,000 в 4 НОВЫЕ монеты: Эксперимент на месяц"': '"Invertí $10,000 en 4 monedas NUEVAS: experimento de un mes"',
+        '"🔝ТОП-7 лучших отпаривателей для одежды 2025 🛍️Отпариватель купить 💬Какой отпариватель"': '"🔝TOP-7 mejores vaporizadores de ropa 2025"',
+        '"УТЮГ БОЛЬШЕ НЕ НУЖЕН? 🔥 Топ-7 отпаривателей, которые СПАСУТ ваши нервы"': '"¿YA NO HACE FALTA PLANCHA? 🔥 Top 7 vaporizadores que te salvarán los nervios"',
+        '"Пробуем уличную еду во Вьетнаме l Мишлен ресторан"': '"Probamos comida callejera en Vietnam | restaurante Michelin"',
+        '"Топ-10 блюд Вьетнама: Рейтинг, который СПАСЕТ твой отпуск 🇻🇳"': '"Top 10 platos de Vietnam: el ranking que salvará tus vacaciones 🇻🇳"',
+        'Тот же канал. Тот же автор. Та же тема.': 'El mismo canal. El mismo autor. El mismo tema.',
+        'Разница — только в упаковке.': 'La diferencia está solo en la presentación.',
+        
+        // CALCULATOR
+        'Калькулятор упущенной выгоды': 'Calculadora de oportunidad perdida',
+        'Сколько просмотров вы': '¿Cuántas visualizaciones has',
+        'уже потеряли': 'ya perdido?',
+        'Узнайте, сколько зрителей прошли мимо ваших видео из-за слабой упаковки': 'Descubre cuántos espectadores pasaron de largo por tus vídeos por una presentación débil',
+        'Средние просмотры на видео': 'Visualizaciones medias por vídeo',
+        'Количество видео на канале': 'Número de vídeos en el canal',
+        'Узнать свои потери': 'Ver mis pérdidas',
+        'Анализируем данные...': 'Analizando datos...',
+        'Плохие новости': 'Malas noticias',
+        'Вот что вы теряете прямо сейчас': 'Esto es lo que estás perdiendo ahora mismo',
+        'Потерянные просмотры': 'Visualizaciones perdidas',
+        'Потерянные подписчики': 'Suscriptores perdidos',
+        'от': 'de',
+        'до': 'a',
+        'Пока вы читаете это,': 'Mientras lees esto,',
+        'потенциальных зрителей': 'espectadores potenciales',
+        'проходят мимо. Это': 'pasan de largo. Eso son',
+        'подписчиков, которых вы не получите.': 'suscriptores que no vas a conseguir.',
+        'Каждый день без оптимизированной упаковки — это потерянный рост,': 'Cada día sin una presentación optimizada es crecimiento perdido',
+        'который достаётся вашим конкурентам.': 'que se lo llevan tus competidores.',
+        'Остановить потери': 'Detener las pérdidas',
+        
+        // PORTFOLIO
+        'Любая ниша. Один результат —': 'Cualquier nicho. Un resultado:',
+        'рост': 'crecimiento',
+        'Все': 'Todo',
+        'Tech': 'Tech',
+        'Gaming': 'Gaming',
+        'Lifestyle': 'Lifestyle',
+        'Бизнес': 'Negocios',
+        'Здоровье': 'Salud',
+        'Психология': 'Psicología',
+        'Другое': 'Otros',
+        'Показать больше': 'Mostrar más',
+        
+        // A/B TESTING
+        'Если нет системы, вы играете в': 'Si no tienes un sistema, estás jugando a',
+        'лотерею': 'la lotería',
+        'Если нет системы — вы играете в лотерею': 'Si no tienes un sistema, estás jugando a la lotería',
+        'Большинство авторов выбирают обложку интуитивно.': 'La mayoría de creadores elige la miniatura de forma intuitiva.',
+        '"Мне нравится эта"': '"Me gusta esta"',
+        '— и надеются. Иногда угадывают, чаще нет.': 'y cruzan los dedos. A veces aciertan, pero la mayoría no.',
+        '"Мне нравится вот эта" — и надеются. Иногда угадывают, чаще нет.': '"Me gusta esta" y cruzan los dedos. A veces aciertan, pero la mayoría no.',
+        'А если бы YouTube сам показал': '¿Y si YouTube te mostrara',
+        'какая обложка лучше?': 'qué miniatura funciona mejor?',
+        'А что, если бы сам YouTube показал, какая обложка лучше?': '¿Y si el propio YouTube te dijera qué miniatura es mejor?',
+        'A/B тест': 'Prueba A/B',
+        '— это когда вы загружаете 2-3 варианта, YouTube показывает их разным зрителям и через 12-72 часа говорит:': 'es cuando subes 2-3 variantes, YouTube las muestra a distintos espectadores y, a las 12-72 horas, te dice:',
+        '"Вот эта получает на 34% больше вовлечённости"': '"Esta logra un 34% más de engagement"',
+        'A/B тест — это когда вы загружаете 2-3 варианта, YouTube показывает их разным зрителям и через 12-72 часа говорит:': 'Una prueba A/B es cuando subes 2-3 variantes, YouTube las muestra a distintos espectadores y, a las 12-72 horas, te dice:',
+        '"Вот эта получает на 34% больше вовлечённости".': '"Esta logra un 34% más de engagement".',
+        'Никаких догадок. Только факты.': 'Sin suposiciones. Solo hechos.',
+        'Вариант А': 'Variante A',
+        'Вариант Б': 'Variante B',
+        'Вариант В': 'Variante C',
+        'Вариант A': 'Variante A',
+        'Вариант B': 'Variante B',
+        'Вариант C': 'Variante C',
+        'Победитель': 'Ganadora',
+        'YouTube выбирает лучший': 'YouTube elige la mejor',
+        'тестируют каждую обложку?': '¿prueban cada miniatura?',
+        'Почему все топ-блогеры тестируют каждую обложку?': '¿Por qué los top creadores prueban cada miniatura?',
+        'Почему все топ-блогеры': '¿Por qué los top creadores',
+        'Даже самый популярный блогер мира': 'Incluso el creador más grande del mundo',
+        'MrBeast': 'MrBeast',
+        'не угадывает. Он загружает несколько вариантов и смотрит данные.': 'no acierta a ojo. Sube varias opciones y mira los datos.',
+        'не угадывает. Он загружает несколько вариантов и смотрит на данные.': 'no acierta a ojo. Sube varias opciones y mira los datos.',
+        'вовлечённости': 'engagement',
+        'от закрытого рта на обложке': 'por una boca cerrada en la miniatura',
+        'Мелочь? Это': '¿Una tontería? Eso son',
+        'миллионы просмотров': 'millones de visualizaciones',
+        'разницы.': 'de diferencia.',
+        'Раньше эта функция была только для топов.': 'Antes esta función era solo para los grandes.',
+        'Теперь доступна всем. И я умею ей пользоваться.': 'Ahora está disponible para todos. Y sé cómo sacarle partido.',
+        'Теперь доступна всем.': 'Ahora está disponible para todos.',
+        'И я умею ей пользоваться.': 'Y sé cómo sacarle partido.',
+        
+        // PACKAGE
+        'Полный пакет': 'Paquete completo',
+        'Полная': 'Presentación completa',
+        'упаковка видео': 'del vídeo',
+        'Обложка': 'Miniatura',
+        'привлекает взгляд': 'atrapa la mirada',
+        'Название': 'Título',
+        'убеждает кликнуть': 'convence para hacer clic',
+        'находит лучшее': 'encuentra la mejor opción',
+        'Обложка под разные триггеры (2-3 варианта)': 'Miniaturas para distintos triggers (2-3 variantes)',
+        'Название с максимальной кликабельностью (2-3 варианта)': 'Títulos con máxima clicabilidad (2-3 variantes)',
+        'A/B тест обложек через YouTube': 'Prueba A/B de miniaturas en YouTube',
+        'A/B тест заголовков через YouTube': 'Prueba A/B de títulos en YouTube',
+        'Анализ результатов и перенос на следующие видео': 'Análisis de resultados y aplicación a los próximos vídeos',
+        'Не просто': 'No es solo',
+        '"сделали картинку"': '"hacer una imagen"',
+        'Система роста просмотров.': 'Es un sistema de crecimiento de visualizaciones.',
+        
+        // SYSTEM
+        'Накопительный эффект': 'Efecto acumulativo',
+        'Каждый тест делает следующее видео': 'Cada prueba hace que el siguiente vídeo sea',
+        'сильнее': 'más fuerte',
+        'Мы не просто делаем обложку и забываем. После каждого A/B теста анализируем:': 'No hacemos una miniatura y nos olvidamos. Después de cada prueba A/B analizamos:',
+        'что сработало?': '¿qué funcionó?',
+        'Успешные элементы переносим на следующие проекты.': 'Los elementos ganadores los trasladamos a los siguientes proyectos.',
+        'Через 5-10 видео у вас есть': 'Tras 5-10 vídeos tendrás',
+        'формула': 'una fórmula',
+        ', которая стабильно работает на': 'que funciona de forma estable para',
+        'ВАШУ': 'TU',
+        'аудиторию.': 'audiencia.',
+        'стили → минимализм': 'estilos → minimalismo',
+        '+ шрифты → жирный': '+ tipografías → en negrita',
+        '+ цвета → синий': '+ colores → azul',
+        '🎯 формула готова': '🎯 fórmula lista',
+        'Не': 'No',
+        '"мне кажется красиво"': '"me parece bonito"',
+        ', а': ', sino',
+        '"YouTube показал что это работает"': '"YouTube demostró que funciona"',
+        
+        // RESULT & GUARANTEE
+        'удержание': 'retención',
+        'Это': 'Son',
+        'тысячи дополнительных зрителей': 'miles de espectadores extra',
+        'с КАЖДОГО видео.': 'de CADA vídeo.',
+        'Без изменения контента.': 'Sin cambiar el contenido.',
+        'Кроме того, я': 'Además, yo',
+        'гарантирую результат': 'garantizo resultados',
+        'Если после теста просмотры': 'Si después de la prueba las visualizaciones',
+        'не вырастут': 'no suben',
+        '— переделаю': 'lo rehago',
+        'бесплатно': 'gratis',
+        '. Вы платите только за результат.': '. Pagas solo por resultados.',
+        '100% гарантия': '100% garantía',
+        
+        // TWO PATHS CTA
+        'Два': 'Dos',
+        'пути': 'caminos',
+        'Продолжать делать обложки сам': 'Seguir haciendo las miniaturas tú mismo',
+        'Надеяться что "контент решает"': 'Confiar en que "el contenido lo es todo"',
+        'Смотреть как конкуренты растут быстрее': 'Ver cómo los competidores crecen más rápido',
+        'Результат через год:': 'Resultado en un año:',
+        'Те же просмотры': 'Las mismas visualizaciones',
+        'или': 'o',
+        'Рекомендуется': 'Recomendado',
+        'Написать мне': 'Escríbeme',
+        'Получить упаковку, проверенную данными': 'Obtener una presentación validada por datos',
+        'Начать расти': 'Empezar a crecer',
+        'Результат через месяц:': 'Resultado en un mes:',
+        '+30-100% просмотров': '+30-100% visualizaciones',
+        'Первый шаг занимает': 'El primer paso toma',
+        '30 секунд': '30 segundos',
+        'Скиньте ссылку на канал — скажу что можно улучшить': 'Envíame el enlace del canal y te diré qué se puede mejorar',
+        'Выбрать путь B': 'Elegir el camino B',
+        'Свободных слотов на этой неделе:': 'Plazas disponibles esta semana:',
+        
+        // FOOTER & MISC
+        'Telegram': 'Telegram',
+        'Email': 'Email',
+        'Наверх': 'Volver arriba',
+        'Закрыть': 'Cerrar',
+        'Предыдущее': 'Anterior',
+        'Следующее': 'Siguiente',
+        
+        // PRICE PAGE
+        'Персональное предложение для вас': 'Oferta personalizada para ti',
+        'Выберите': 'Elige',
+        'тариф': 'un plan',
+        'Каждый тариф окупается после': 'Cada plan se amortiza después de',
+        'первого видео': 'el primer vídeo',
+        'БАЗОВЫЙ': 'BÁSICO',
+        'Идеальный старт:': 'Inicio ideal:',
+        'быстрый результат': 'resultado rápido',
+        'без риска': 'sin riesgo',
+        '1 обложка с': '1 miniatura con',
+        'максимальной': 'máxima',
+        'проработкой': 'elaboración',
+        '1 заголовок, усиливающий эффект': '1 título que potencia el rendimiento',
+        '+ Бонус: вариация для тестов': '+ Bonus: variación para pruebas',
+        'Выбрать': 'Elegir',
+        'СТАНДАРТ': 'ESTÁNDAR',
+        'Популярный': 'Más popular',
+        'Для тех, кто хочет': 'Para quien quiere',
+        '×2-4 просмотров': '×2-4 visualizaciones',
+        '2 обложки для': '2 miniaturas para',
+        'A/B теста': 'prueba A/B',
+        '2 заголовка под': '2 títulos para',
+        'алгоритмы': 'el algoritmo',
+        '+ Бонус: вариация': '+ Bonus: variación',
+        'победителя': 'de la ganadora',
+        'ПРЕМИУМ': 'PREMIUM',
+        'Для': 'Para',
+        'топ-1': 'top-1',
+        'в нише': 'del nicho',
+        '3 обложки для': '3 miniaturas para',
+        'A/B/C теста': 'prueba A/B/C',
+        '3 заголовка под': '3 títulos para',
+        'максимум кликов': 'máximo de clics',
+        '+ Бонус: анализ +': '+ Bonus: análisis +',
+        'внедрение': 'implementación',
+        '100% гарантия качества': '100% garantía de calidad',
+        'Не знаете что выбрать?': '¿No sabes qué elegir?',
+        'Напишите — подскажу': 'Escríbeme y te aconsejo',
+        'Вернуться на главную': 'Volver a la página principal',
+        'Начать': 'Empezar',
+        
+        // Channel names
+        'Больше золота': 'Más oro',
+        'Нулевой Пациент': 'Paciente cero',
+        
+        // Price page meta
+        'Тарифы | Genial Design': 'Tarifas | Genial Design',
+        'Тарифы на создание обложек и названий для YouTube. Выберите подходящий вариант.': 'Tarifas para miniaturas y títulos de YouTube. Elige la opción adecuada.'
+    };
+
 
     // ============ CHANNELS HTML (for UK and EN - same channels + The Q) ============
     const channelsHTML_uk = `
@@ -1162,15 +1480,267 @@
                     </a>
     `;
 
+    // Spanish channels (same as EN but with Spanish labels)
+    const channelsHTML_es = `
+                    <!-- Channel 1 - The Q -->
+                    <a href="https://www.youtube.com/@TheQ_original" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/qBXkWc8R/channels4-profile-(1).jpg" alt="The Q" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">The Q</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">13,2M</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 2 - vanzai -->
+                    <a href="https://www.youtube.com/@vanzai" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/15n9Cx58/channels4-profile.jpg" alt="vanzai" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">vanzai</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">10,7M</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 3 - Top5s -->
+                    <a href="https://www.youtube.com/@Top5s" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/bYMTcb8W/unnamed-(54).jpg" alt="Top5s" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Top5s</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">3,45M</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 4 - OK Forever -->
+                    <a href="https://www.youtube.com/@OK-Forever" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/7YWjRbQ6/unnamed-(53).jpg" alt="OK Forever" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">OK Forever</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">1,9M</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 5 - INSIDE FOOTBALL -->
+                    <a href="https://www.youtube.com/@InsideFootballENG" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/QxchcQdJ/channels4-profile-(6).jpg" alt="INSIDE FOOTBALL" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">INSIDE FOOTBALL</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">783K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 6 - Oleg Bokov -->
+                    <a href="https://www.youtube.com/@OlegBokov" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/xdJmPpNd/channels4-profile-(2).jpg" alt="Oleg Bokov" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Oleg Bokov</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">650K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 7 - WarsofTheWorld -->
+                    <a href="https://www.youtube.com/@warsoftheworld1945" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/FR1hSwYZ/unnamed-(57).jpg" alt="WarsofTheWorld" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">WarsofTheWorld</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">405K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 8 - Siarist -->
+                    <a href="https://www.youtube.com/@Siarist" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/SRTQ3qHf/channels4-profile-(3).jpg" alt="Siarist" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Siarist</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">252K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 9 - Mykkyta -->
+                    <a href="https://www.youtube.com/@Mykkyta_1" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/tC4Nx5kG/channels4-profile-(7).jpg" alt="Mykkyta" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Mykkyta</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">200K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 10 - CriptoMind -->
+                    <a href="https://www.youtube.com/@CriptoMindYT" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/PJPnLDRk/channels4-profile-(4).jpg" alt="CriptoMind" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">CriptoMind</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">175K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 11 - Más oro -->
+                    <a href="https://www.youtube.com/@bolshegold" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/FHKChv8Z/unnamed-(56).jpg" alt="Más oro" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Más oro</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">117K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 12 - Paciente cero -->
+                    <a href="https://www.youtube.com/@PATIENT-ZERO" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/ncy3yWBY/unnamed-(58).jpg" alt="Paciente cero" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Paciente cero</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">120K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- Channel 13 - Shooterino -->
+                    <a href="https://www.youtube.com/@ShooterinoYT" target="_blank" class="channel-card glass-card">
+                        <div class="channel-avatar-wrapper">
+                            <img src="https://i.postimg.cc/wBVC0FK6/channels4-profile-(5).jpg" alt="Shooterino" class="channel-avatar">
+                            <div class="channel-avatar-glow"></div>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-name">Shooterino</div>
+                            <div class="channel-subs">
+                                <span class="channel-subs-count">115K</span>
+                                <span class="channel-subs-label">suscriptores</span>
+                            </div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </a>
+    `;
+
 
     // Select translations based on language
-    const translations = (siteLang === 'uk') ? translations_uk : translations_en;
-    const channelsHTML = (siteLang === 'uk') ? channelsHTML_uk : channelsHTML_en;
+    const translations = (siteLang === 'uk') ? translations_uk : (siteLang === 'es') ? translations_es : translations_en;
+    const channelsHTML = (siteLang === 'uk') ? channelsHTML_uk : (siteLang === 'es') ? channelsHTML_es : channelsHTML_en;
 
     // Hero subtitle translations
     const heroSubtitleText = {
         'uk': 'Комплексне рішення: візуал + заголовок + A/B-тестування.<br>Гарантоване зростання переглядів. Ми не вгадуємо — ми спираємося на дані.',
-        'en': 'End-to-end solution: visual + title + A/B testing.<br>Guaranteed view growth. No guessing — only data.'
+        'en': 'End-to-end solution: visual + title + A/B testing.<br>Guaranteed view growth. No guessing — only data.',
+        'es': 'Solución integral: visual + título + pruebas A/B.<br>Crecimiento garantizado de visualizaciones. No adivinamos: trabajamos con datos.'
     };
 
     // Main translation function
