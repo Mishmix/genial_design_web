@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script src="lang.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Для бизнеса | Genial Design</title>
+    <meta name="description" content="Визуальная упаковка для предпринимателей и экспертов. Превращаем просмотры в доверие инвесторов и партнёров.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/7Pmmx4yf/image-2025-12-05-05-09-53.png">
+    <meta name="theme-color" content="#030303">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        /* Business page styles */
+        .business-page {
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Hero Section */
+        .business-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 1.5rem 4rem;
+            position: relative;
+        }
+        
+        .business-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .business-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            margin-bottom: 3rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+        }
+        
+        .business-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .business-logo-img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.625rem;
+        }
+        
+        .business-logo-text {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text);
+        }
+        
+        .business-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 100px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+        
+        .business-hero-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+        }
+        
+        .business-hero-title .gradient-text {
+            background: linear-gradient(135deg, #10b981, #06b6d4, #10b981);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .business-hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.4s forwards;
+        }
+        
+        .business-hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+        }
+        
+        .business-hero-cta .btn {
+            min-width: 220px;
+        }
+        
+        .business-scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.7s forwards;
+        }
+        
+        .business-scroll-hint svg {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(8px); }
+            60% { transform: translateY(4px); }
+        }
+        
+        /* Trust indicators */
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.6s forwards;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .trust-item svg {
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        
+        /* Pricing Section */
+        .business-pricing {
+            padding: 6rem 1.5rem;
+            position: relative;
+        }
+        
+        .business-pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+        }
+        
+        .business-section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .business-section-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .business-section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Pricing Grid */
+        .business-pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 900px) {
+            .business-pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+        
+        /* Pricing Card */
+        .business-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .business-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Featured Card */
+        .business-card.featured {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05));
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .business-card.featured::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            border-radius: 100px;
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-card:not(.featured) .card-icon {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+        }
+        
+        .business-card.featured .card-icon {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.15));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .business-card:not(.featured) .card-icon svg {
+            color: var(--text-muted);
+        }
+        
+        .business-card.featured .card-icon svg {
+            color: var(--accent);
+        }
+        
+        .card-tier {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .business-card.featured .card-tier {
+            color: var(--accent);
+        }
+        
+        .card-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price-amount {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .price-period {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        .card-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .card-features-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+        
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+        
+        .card-features li {
+            display: flex;
+            gap: 0.875rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .card-features li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .feature-icon-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        
+        .business-card:not(.featured) .feature-icon-check {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .business-card.featured .feature-icon-check {
+            background: rgba(16, 185, 129, 0.15);
+        }
+        
+        .feature-icon-check svg {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .business-card:not(.featured) .feature-icon-check svg {
+            color: var(--text-muted);
+        }
+        
+        .business-card.featured .feature-icon-check svg {
+            color: var(--accent);
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .feature-desc {
+            color: var(--text-muted);
+        }
+        
+        /* Bonus section */
+        .card-bonus {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed var(--border-light);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-card.featured .card-bonus {
+            background: rgba(16, 185, 129, 0.05);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .bonus-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .business-card:not(.featured) .bonus-label {
+            color: var(--text-muted);
+        }
+        
+        .business-card.featured .bonus-label {
+            color: var(--accent);
+        }
+        
+        .bonus-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .bonus-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        /* Package deal */
+        .card-package {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-card.featured .card-package {
+            background: rgba(16, 185, 129, 0.08);
+        }
+        
+        .package-icon {
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+        
+        .package-text {
+            font-size: 0.9rem;
+        }
+        
+        .package-price {
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .package-savings {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* Card CTA */
+        .card-cta {
+            width: 100%;
+        }
+        
+        .card-cta.btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .card-cta.btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--text);
+        }
+        
+        .card-cta.btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Why Section */
+        .business-why {
+            padding: 6rem 1.5rem;
+            position: relative;
+        }
+        
+        .business-why::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 900px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+        
+        .why-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        
+        .why-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+        
+        .why-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .why-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .business-footer {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        
+        .business-footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-back:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hide cursor on mobile */
+        @media (max-width: 1024px) {
+            .cursor, .cursor-follower {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .business-hero {
+                padding: 4rem 1rem 3rem;
+                min-height: auto;
+            }
+            
+            .business-hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .trust-row {
+                gap: 1rem;
+            }
+            
+            .trust-item {
+                font-size: 0.8rem;
+            }
+            
+            .business-pricing,
+            .business-why {
+                padding: 4rem 1rem;
+            }
+            
+            .business-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .price-amount {
+                font-size: 2rem;
+            }
+            
+            .why-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="https://i.postimg.cc/MTvC92Ng/image-2025-12-05-05-09-53.png" alt="Genial Design" class="loader-logo-img">
+                <div class="loader-logo-text">Genial<span class="accent">Design</span></div>
+            </div>
+            <div class="loader-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor (desktop only) -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Background effects -->
+    <div class="gradient-mesh"></div>
+    <div class="noise-overlay"></div>
+    <div class="grid-pattern"></div>
+    
+    <!-- Animated background orbs -->
+    <div class="bg-orbs">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <main class="business-page">
+
+        <!-- Hero Section -->
+        <section class="business-hero">
+            <a href="/" class="business-logo" data-magnetic>
+                <img src="https://i.postimg.cc/7Pmmx4yf/image-2025-12-05-05-09-53.png" alt="Genial Design" class="business-logo-img">
+                <span class="business-logo-text">Genial<span class="accent">Design</span></span>
+            </a>
+            
+            <div class="business-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                Для бизнеса
+            </div>
+            
+            <h1 class="business-hero-title">
+                Визуальная упаковка<br><span class="gradient-text">сложных продуктов</span>
+            </h1>
+            
+            <p class="business-hero-subtitle">
+                Превращаем просмотры в доверие инвесторов и партнёров.<br>
+                Работаем на цифрах, а не на вкусовщине.
+            </p>
+            
+            <div class="business-hero-cta">
+                <a href="#pricing" class="btn btn-primary btn-lg btn-magnetic btn-glow" data-magnetic>
+                    <span>Смотреть тарифы</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14l-7 7-7-7"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="trust-row">
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>NDA по запросу</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12,6 12,12 16,14"/>
+                    </svg>
+                    <span>Сдача за 48 часов</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22,4 12,14.01 9,11.01"/>
+                    </svg>
+                    <span>Работаем с B2B с 2021</span>
+                </div>
+            </div>
+            
+            <div class="business-scroll-hint">
+                <span>Подробнее</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 14l-7 7-7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="business-pricing" id="pricing">
+            <div class="container">
+                <div class="business-section-header">
+                    <h2 class="business-section-title">Выберите <span class="gradient-text">формат работы</span></h2>
+                    <p class="business-section-subtitle">Оба тарифа включают полную передачу прав на использование</p>
+                </div>
+                
+                <div class="business-pricing-grid">
+                    <!-- Card 1: Бизнес-статус -->
+                    <div class="business-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="card-tier">Бизнес-статус</div>
+                        
+                        <div class="card-price">
+                            <span class="price-amount">6 900 ₽</span>
+                            <span class="price-period">/ видео</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            <strong>Визуальная гигиена бренда.</strong> Идеально, чтобы поддерживать репутацию надёжной компании без лишних экспериментов.
+                        </p>
+                        
+                        <div class="card-features-title">Что внутри:</div>
+                        
+                        <ul class="card-features">
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">Деловая ретушь спикера</span><br>
+                                    <span class="feature-desc">Убираем следы усталости и выравниваем свет. Лицо остаётся живым — без эффекта «пластиковой маски».</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">Смысловая упаковка</span><br>
+                                    <span class="feature-desc">Композиция, которая транслирует надёжность. Шрифты и цвета премиум-сегмента.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">Копирайтинг обложки</span><br>
+                                    <span class="feature-desc">Короткий тезис, который цепляет взрослую платёжеспособную аудиторию.</span>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="card-bonus">
+                            <div class="bonus-label">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/>
+                                    <path d="M12 2v10"/>
+                                    <path d="M12 12l4-4"/>
+                                    <path d="M12 12l-4-4"/>
+                                </svg>
+                                Бонус
+                            </div>
+                            <div class="bonus-title">Вертикальная версия (Stories)</div>
+                            <div class="bonus-desc">Адаптация под 9:16 для Instagram, WhatsApp Status или YouTube Shorts.</div>
+                        </div>
+                        
+                        <div class="card-package">
+                            <svg class="package-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                            <div class="package-text">
+                                <span class="package-price">62 000 ₽ за 10 выпусков</span><br>
+                                <span class="package-savings">Выгода 7 000 ₽</span>
+                            </div>
+                        </div>
+                        
+                        <a href="https://t.me/m/oUIqO0LfZDli" target="_blank" class="btn btn-lg card-cta btn-secondary btn-magnetic" data-magnetic>
+                            <span>Выбрать «Статус»</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Card 2: Стратегия и тесты (Featured) -->
+                    <div class="business-card featured">
+                        <div class="featured-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                            </svg>
+                            Рекомендуем
+                        </div>
+                        
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="card-tier">Стратегия и тесты</div>
+                        
+                        <div class="card-price">
+                            <span class="price-amount">12 900 ₽</span>
+                            <span class="price-period">/ видео</span>
+                        </div>
+                        
+                        <p class="card-description">
+                            <strong>Лабораторный подход.</strong> Мы не гадаем — используем алгоритмы YouTube, чтобы найти вашу аудиторию и максимизировать конверсию.
+                        </p>
+                        
+                        <div class="card-features-title">Что внутри:</div>
+                        
+                        <ul class="card-features">
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">3 концепции (A/B/C тест)</span><br>
+                                    <span class="feature-desc">Три разных психологических захода: «Личный бренд», «Продуктовый», «Провокационный».</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">Технология выбора победителя</span><br>
+                                    <span class="feature-desc">YouTube сам определяет, на что кликают реальные люди. Оставляем вариант с лучшей конверсией.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">Проработка названия видео</span><br>
+                                    <span class="feature-desc">Заголовок, который усиливает обложку и работает на поиск (SEO).</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="feature-title">Аналитический отчёт</span><br>
+                                    <span class="feature-desc">Данные: почему сработал этот вариант и как использовать инсайт в продажах.</span>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="card-bonus">
+                            <div class="bonus-label">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                                </svg>
+                                VIP Бонус
+                            </div>
+                            <div class="bonus-title">Promo-Kit для соцсетей</div>
+                            <div class="bonus-desc">Комплект баннеров: вертикальный (Stories/Reels) + квадратный/горизонтальный (Telegram, TenChat, VC.ru).</div>
+                        </div>
+                        
+                        <div class="card-package">
+                            <svg class="package-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                            <div class="package-text">
+                                <span class="package-price">110 000 ₽ за 10 выпусков</span><br>
+                                <span class="package-savings">Выгода 19 000 ₽</span>
+                            </div>
+                        </div>
+                        
+                        <a href="https://t.me/m/oUIqO0LfZDli" target="_blank" class="btn btn-lg card-cta btn-primary btn-magnetic btn-glow" data-magnetic>
+                            <span>Начать со Стратегией</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="business-why">
+            <div class="container">
+                <div class="business-section-header">
+                    <h2 class="business-section-title">Как упаковка влияет на <span class="gradient-text">чек сделки</span></h2>
+                    <p class="business-section-subtitle">Три принципа, которые мы используем в работе</p>
+                </div>
+                
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Дорогое к дорогому</h3>
+                        <p class="why-text">
+                            Ваш продукт стоит миллионы. Если обложка выглядит кустарно, клиент подсознательно переносит это ощущение на качество вашего оборудования. Мы убираем этот диссонанс.
+                        </p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="8" r="5"/>
+                                <path d="M20 21a8 8 0 10-16 0"/>
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Естественность, а не глянец</h3>
+                        <p class="why-text">
+                            Мы не делаем из предпринимателей фотомоделей. Наша задача — показать вас в лучшем свете. Как хороший деловой костюм: он не меняет человека, но меняет отношение к нему.
+                        </p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v4"/>
+                                <path d="M12 18v4"/>
+                                <path d="M4.93 4.93l2.83 2.83"/>
+                                <path d="M16.24 16.24l2.83 2.83"/>
+                                <path d="M2 12h4"/>
+                                <path d="M18 12h4"/>
+                                <path d="M4.93 19.07l2.83-2.83"/>
+                                <path d="M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Инвестиция, а не расход</h3>
+                        <p class="why-text">
+                            Одна целевая заявка от инвестора, который кликнул благодаря правильному акценту, окупает годовое ведение канала. Это не затраты — это актив.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="business-footer">
+            <a href="/" class="footer-back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Вернуться на главную
+            </a>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
