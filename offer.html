@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script src="lang.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Специальное предложение | Genial Design</title>
+    <meta name="description" content="Специальное предложение на создание обложек и названий для YouTube.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/7Pmmx4yf/image-2025-12-05-05-09-53.png">
+    <meta name="theme-color" content="#030303">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        /* Offer page specific styles */
+        .price-page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+        
+        .price-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .price-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .price-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .price-logo-img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.625rem;
+        }
+        
+        .price-logo-text {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text);
+        }
+        
+        .price-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+        
+        .price-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.8s forwards;
+        }
+        
+        .price-back:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(16, 185, 129, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        /* Section header improvements */
+        #pricing .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        #pricing .section-title {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+        }
+        
+        #pricing .section-subtitle {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+        
+        /* Pricing grid - 2 columns for offer page */
+        #pricing .pricing-grid {
+            margin-bottom: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            #pricing .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Card animations */
+        .pricing-card-new {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardFadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .pricing-card-new:nth-child(1) { animation-delay: 0.2s; }
+        .pricing-card-new:nth-child(2) { animation-delay: 0.35s; }
+        
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Enhanced card glow on hover */
+        .pricing-card-new::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .pricing-card-new:hover::before {
+            opacity: 1;
+        }
+        
+        /* Popular card enhanced glow */
+        .popular-card::before {
+            background: linear-gradient(135deg, var(--accent), var(--cyan), var(--accent));
+            opacity: 0.5;
+        }
+        
+        .popular-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Pricing help text */
+        .pricing-help {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.7s forwards;
+        }
+        
+        .pricing-help-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-help-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .pricing-help-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Discount badge */
+        .pricing-discount {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-discount svg {
+            flex-shrink: 0;
+            color: var(--text-muted);
+        }
+        
+        .pricing-discount strong {
+            color: var(--accent);
+        }
+        
+        .pricing-discount.highlight {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .pricing-discount.highlight svg {
+            color: var(--accent);
+        }
+        
+        /* Footer section */
+        .price-footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .price-page-wrapper {
+                padding: 1.5rem 1rem;
+                justify-content: flex-start;
+                padding-top: 3rem;
+            }
+            
+            .price-header {
+                margin-bottom: 2rem;
+            }
+            
+            .price-logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .price-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            #pricing .section-header {
+                margin-bottom: 2rem;
+            }
+            
+            .price-back {
+                margin-top: 2rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Hide cursor on mobile */
+        @media (max-width: 1024px) {
+            .cursor, .cursor-follower {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="https://i.postimg.cc/MTvC92Ng/image-2025-12-05-05-09-53.png" alt="Genial Design" class="loader-logo-img">
+                <div class="loader-logo-text">Genial<span class="accent">Design</span></div>
+            </div>
+            <div class="loader-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor (desktop only) -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Background effects -->
+    <div class="gradient-mesh"></div>
+    <div class="noise-overlay"></div>
+    <div class="grid-pattern"></div>
+    
+    <!-- Animated background orbs -->
+    <div class="bg-orbs">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+    
+    <main class="price-page-wrapper">
+        <div class="price-header">
+            <a href="/" class="price-logo" data-magnetic>
+                <img src="https://i.postimg.cc/7Pmmx4yf/image-2025-12-05-05-09-53.png" alt="Genial Design" class="price-logo-img">
+                <span class="price-logo-text">Genial<span class="accent">Design</span></span>
+            </a>
+            <p class="price-subtitle">Специальное предложение для вас</p>
+        </div>
+
+        <section class="section" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Выберите <span class="gradient-text">тариф</span></h2>
+                    <p class="section-subtitle">Каждый тариф окупается после <strong>первого видео</strong></p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Эстетика тариф -->
+                    <div class="pricing-card-new glass-card">
+                        <div class="pricing-header">
+                            <div class="pricing-tier-badge-new green-badge">ЭСТЕТИКА</div>
+                            <div class="pricing-price-new">
+                                <span class="price-amount">$39</span>
+                            </div>
+                        </div>
+                        <p class="pricing-tagline-new">Доступный вариант для новичков: <strong>быстрое привлечение</strong> новых зрителей</p>
+                        <ul class="pricing-features-new">
+                            <li class="feature-item">
+                                <div class="feature-icon check-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">1 обложка с <strong>максимальной проработкой</strong>, где фокус на росте просмотров</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon check-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">1 заголовок, который <strong>усиливает эффект</strong> обложки</span>
+                            </li>
+                            <li class="feature-item bonus-item">
+                                <div class="feature-icon bonus-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 8v8m-4-4h8"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">Бонус: базовая вариация обложки для проверки гипотез</span>
+                            </li>
+                        </ul>
+                        <div class="pricing-discount">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                            <span>Скидка <strong>5%</strong> на пакет из 10 видео</span>
+                        </div>
+                        <a href="https://t.me/m/eUyTT9uwZDEy" target="_blank" class="pricing-btn pricing-btn-secondary btn-magnetic" data-magnetic>
+                            <span>Выбрать Эстетику</span>
+                        </a>
+                    </div>
+
+                    <!-- Система роста тариф (популярный) -->
+                    <div class="pricing-card-new popular-card glass-card">
+                        <div class="popular-badge-new">Популярный</div>
+                        <div class="pricing-header">
+                            <div class="pricing-tier-badge-new blue-badge">СИСТЕМА РОСТА</div>
+                            <div class="pricing-price-new">
+                                <span class="price-amount">$69</span>
+                            </div>
+                        </div>
+                        <p class="pricing-tagline-new">Для тех, кто хочет в топ: <strong>проверенная система</strong> роста просмотров</p>
+                        <ul class="pricing-features-new">
+                            <li class="feature-item">
+                                <div class="feature-icon check-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">2 обложки для <strong>A/B теста</strong> — YouTube найдёт ту, что принесёт больше просмотров</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon check-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">2 заголовка под <strong>алгоритмы и психологию клика</strong>, которые цепляют внимание</span>
+                            </li>
+                            <li class="feature-item bonus-item">
+                                <div class="feature-icon bonus-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 8v8m-4-4h8"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">Бонус: вариация <strong>победившей обложки</strong> для закрепления роста</span>
+                            </li>
+                        </ul>
+                        <div class="pricing-discount highlight">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                            <span>Скидка <strong>10%</strong> на пакет из 10 видео</span>
+                        </div>
+                        <a href="https://t.me/m/tphYbhDoOTFi" target="_blank" class="pricing-btn pricing-btn-primary btn-magnetic btn-glow" data-magnetic>
+                            <span>Выбрать Рост</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="price-footer">
+                    <p class="pricing-help">
+                        Не знаете что выбрать? <a href="https://t.me/m/oUIqO0LfZDli" target="_blank" class="pricing-help-link">Напишите — подскажу</a>
+                    </p>
+
+                    <a href="/" class="price-back">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Вернуться на главную
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
