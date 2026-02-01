@@ -140,8 +140,8 @@ html {
 }
 
 body {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
     max-width: 100vw;
@@ -239,8 +239,6 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    overflow-x: hidden;
-    overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
