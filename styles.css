@@ -134,12 +134,14 @@ html, body {
 /* CRITICAL: Prevent horizontal scroll on mobile */
 html {
     overflow-x: hidden !important;
+    overflow-y: auto !important;
     overscroll-behavior-x: none;
     max-width: 100vw;
 }
 
 body {
     overflow-x: hidden !important;
+    overflow-y: auto !important;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
     max-width: 100vw;
@@ -160,9 +162,9 @@ body {
     transform: translateZ(0);
 }
 
-/* Contain layout for sections */
+/* Contain style for sections (layout containment removed - can break scroll) */
 .section {
-    contain: layout style;
+    contain: style;
 }
 
 /* Reduce paint for fixed elements */
@@ -238,6 +240,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
+    overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
