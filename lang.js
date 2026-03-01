@@ -1866,7 +1866,16 @@
         
         // Update HTML lang attribute
         document.documentElement.lang = siteLang;
-        
+
+        // Override prices for English version
+        if (siteLang === 'en') {
+            const enPrices = ['$39', '$49', '$69'];
+            const priceAmounts = document.querySelectorAll('.pricing-grid .price-amount');
+            priceAmounts.forEach(function(el, i) {
+                if (enPrices[i]) el.textContent = enPrices[i];
+            });
+        }
+
         // Hide loading screen after translation is complete
         hideLoader();
     }
