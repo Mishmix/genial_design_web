@@ -1920,21 +1920,26 @@
             }
         };
 
-        if (lang === 'ru') return; // Russian is default in HTML
+        // Russian is default in HTML, siteLang === 'ru' already returned at line 55
+        // so we only get here for uk/en/es
 
-        // Update index page links (all tg links without data-plan)
         var allTgLinks = document.querySelectorAll('a[href*="t.me/genial_design"]');
         allTgLinks.forEach(function(link) {
             var plan = link.getAttribute('data-plan');
-            if (plan && planMessages[plan] && planMessages[plan][lang]) {
-                link.href = tgBase + encodeURIComponent(planMessages[plan][lang]);
-            } else if (!plan && indexMessages[lang]) {
-                link.href = tgBase + encodeURIComponent(indexMessages[lang]);
+            if (plan && planMessages[plan] && planMessages[plan][siteLang]) {
+                link.href = tgBase + encodeURIComponent(planMessages[plan][siteLang]);
+            } else if (!plan && indexMessages[siteLang]) {
+                link.href = tgBase + encodeURIComponent(indexMessages[siteLang]);
             }
         });
     }
 
-    translateTelegramLinks();
+    // Run after DOM is ready (same as translatePage)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', translateTelegramLinks);
+    } else {
+        translateTelegramLinks();
+    }
 
     // Observe dynamic content changes
     const observer = new MutationObserver(function(mutations) {
