@@ -1887,6 +1887,55 @@
         translatePage();
     }
     
+    // Translate Telegram links based on language
+    function translateTelegramLinks() {
+        var tgBase = 'https://t.me/genial_design?text=';
+
+        var indexMessages = {
+            uk: 'Вітаю, хочу більше переглядів\nМій канал:',
+            en: 'Hello, I want more views\nMy channel:',
+            es: 'Hola, quiero más visualizaciones\nMi canal:'
+        };
+
+        var planMessages = {
+            basic: {
+                uk: 'Я обираю тариф «Базовий»',
+                en: 'I choose the "Basic" plan',
+                es: 'Elijo el plan "Básico"'
+            },
+            standard: {
+                uk: 'Я обираю тариф «Стандарт»',
+                en: 'I choose the "Standard" plan',
+                es: 'Elijo el plan "Estándar"'
+            },
+            premium: {
+                uk: 'Я обираю тариф «Преміум»',
+                en: 'I choose the "Premium" plan',
+                es: 'Elijo el plan "Premium"'
+            },
+            help: {
+                uk: 'Вітаю, допоможіть обрати тариф',
+                en: 'Hello, help me choose a plan',
+                es: 'Hola, ayúdame a elegir un plan'
+            }
+        };
+
+        if (lang === 'ru') return; // Russian is default in HTML
+
+        // Update index page links (all tg links without data-plan)
+        var allTgLinks = document.querySelectorAll('a[href*="t.me/genial_design"]');
+        allTgLinks.forEach(function(link) {
+            var plan = link.getAttribute('data-plan');
+            if (plan && planMessages[plan] && planMessages[plan][lang]) {
+                link.href = tgBase + encodeURIComponent(planMessages[plan][lang]);
+            } else if (!plan && indexMessages[lang]) {
+                link.href = tgBase + encodeURIComponent(indexMessages[lang]);
+            }
+        });
+    }
+
+    translateTelegramLinks();
+
     // Observe dynamic content changes
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
