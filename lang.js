@@ -367,7 +367,16 @@
         'Не знаете что выбрать?': 'Не знаєте, що обрати?',
         'Напишите — подскажу': 'Напишіть — підкажу',
         'Вернуться на главную': 'Повернутися на головну',
-        
+
+        // OFFER PAGE
+        'Специальное предложение для вас': 'Спеціальна пропозиція для вас',
+        'ЭСТЕТИКА': 'ЕСТЕТИКА',
+        'СИСТЕМА РОСТА': 'СИСТЕМА ЗРОСТАННЯ',
+        'Выбрать Эстетику': 'Обрати Естетику',
+        'Выбрать Рост': 'Обрати Зростання',
+        'Специальное предложение | Genial Design': 'Спеціальна пропозиція | Genial Design',
+        'Специальное предложение на создание обложек и названий для YouTube.': 'Спеціальна пропозиція на створення обкладинок та назв для YouTube.',
+
         // Channel names
         'Больше золота': 'Більше золота',
         'Нулевой Пациент': 'Нульовий Пацієнт',
@@ -690,7 +699,16 @@
         'Не знаете что выбрать?': 'Not sure what to choose?',
         'Напишите — подскажу': 'Message me — I\'ll advise',
         'Вернуться на главную': 'Back to home',
-        
+
+        // OFFER PAGE
+        'Специальное предложение для вас': 'A special offer for you',
+        'ЭСТЕТИКА': 'AESTHETICS',
+        'СИСТЕМА РОСТА': 'GROWTH SYSTEM',
+        'Выбрать Эстетику': 'Choose Aesthetics',
+        'Выбрать Рост': 'Choose Growth',
+        'Специальное предложение | Genial Design': 'Special Offer | Genial Design',
+        'Специальное предложение на создание обложек и названий для YouTube.': 'Special offer for YouTube thumbnail and title creation.',
+
         // Channel names
         'Больше золота': 'More Gold',
         'Нулевой Пациент': 'Patient Zero',
@@ -1012,7 +1030,16 @@
         'Не знаете что выбрать?': '¿No sabes qué elegir?',
         'Напишите — подскажу': 'Escríbeme y te aconsejo',
         'Вернуться на главную': 'Volver a la página principal',
-        
+
+        // OFFER PAGE
+        'Специальное предложение для вас': 'Una oferta especial para ti',
+        'ЭСТЕТИКА': 'ESTÉTICA',
+        'СИСТЕМА РОСТА': 'SISTEMA DE CRECIMIENTO',
+        'Выбрать Эстетику': 'Elegir Estética',
+        'Выбрать Рост': 'Elegir Crecimiento',
+        'Специальное предложение | Genial Design': 'Oferta especial | Genial Design',
+        'Специальное предложение на создание обложек и названий для YouTube.': 'Oferta especial para la creación de miniaturas y títulos de YouTube.',
+
         // Channel names
         'Больше золота': 'Más oro',
         'Нулевой Пациент': 'Paciente cero',
